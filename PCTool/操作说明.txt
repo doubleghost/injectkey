@@ -1,0 +1,4 @@
+1.安装injectservertest应用到手机，并启动。
+2.如果是已root手机，直接点击开始键值映射，直到提示映射成功。
+3.如果是没有root的手机，需要双击InjectServerPCTool工具里面的Start.bat。直接到提示injectservce success!，这时在应用上点击开始键值映射，会直接提示已成功。
+4.点击测试。按home键回桌面，会看到桌面在自动划动。
