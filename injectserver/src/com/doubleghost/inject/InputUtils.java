@@ -1,4 +1,4 @@
-package com.doubleghost.bluetoothgamepadinject;
+package com.doubleghost.inject;
 import android.content.Context;
 import android.hardware.input.InputManager;
 import android.hardware.input.IInputManager;
@@ -17,33 +17,14 @@ import android.os.RemoteException;
 public class InputUtils{
 	private static final String TAG = "InputUtils";
 	public IInputManager inputManager;
-	//public InputManager inputManager;
 	InputUtils(){
-		//inputManager = InputManager.getInstance();//getInputManager();
-		//Log.d(TAG,"inputManager handle :"+inputManager);
 		IBinder imBinder = ServiceManager.getService("input");  
 		inputManager = IInputManager.Stub.asInterface(imBinder);
-		//inputManager = (InputManager) getSystemService(Context.INPUT_SERVICE);  
 	}
-	//public static InputManager getInputManager() {
-     //   return InputManager.getInstance();
-    //}
 	public static KeyEvent getKeyEvent(int action, int code) {
         return KeyEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), action, code, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, null);
     }
 	
-	public  void sendTapDown( long now,float x, float y) {
-        injectMotionEvent(InputDevice.SOURCE_TOUCHSCREEN, MotionEvent.ACTION_DOWN, now, x, y, 1.0f);
-    }
-	public  void sendTapUp(long now, float x, float y) {
-        injectMotionEvent(InputDevice.SOURCE_TOUCHSCREEN, MotionEvent.ACTION_UP, now, x, y, 0.0f);
-    }
-	public  void sendTapDownB( long now,float x, float y) {
-		injectMotionEventB(InputDevice.SOURCE_TOUCHSCREEN, MotionEvent.ACTION_DOWN, now, x, y, 1.0f);
-    }
-	public  void sendTapUpB(long now, float x, float y) {
-		injectMotionEventB(InputDevice.SOURCE_TOUCHSCREEN, MotionEvent.ACTION_UP, now, x, y, 0.0f);
-    }
     public  void sendTap(int inputSource, float x, float y) {
         long now = SystemClock.uptimeMillis();
         injectMotionEvent(inputSource, MotionEvent.ACTION_DOWN, now, x, y, 1.0f);
